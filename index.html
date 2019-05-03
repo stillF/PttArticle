@@ -249,7 +249,7 @@
             }
 
             if (ptt_url != "") {
-                window.open(ptt_url, '_blank');
+                window.open(ptt_url, '_new');
             }
         }
 
@@ -257,7 +257,7 @@
             var random_ptt_index = Math.floor(Math.random() * $("#ptt_name option").length);
             var random_ptt_name = $("#ptt_name").find('option').eq(random_ptt_index).val();
             var ptt_url = "https://www.ptt.cc/bbs/" + random_ptt_name + "/search?q=recommend%3A10";
-            window.open(ptt_url, '_blank');
+            window.open(ptt_url, '_new');
         }
 
     </script>

@@ -210,6 +210,11 @@
             $("#ptt_name").select2({
                 width: "100%"
             });
+
+            $("#ptt_name").change(function () {
+                before_submit();
+            });
+
         });
 
         function before_submit() {

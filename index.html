@@ -208,52 +208,53 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#ptt_name").select2({
-                language: "zh-TW",
                 width: "100%"
             });
         });
 
         function before_submit() {
-            var _ptt_url = "";
-            var _ptt_type = $("input[name='ptt_type']:checked").val();
-            var _ptt_name = $("#ptt_name").val();
+            var ptt_url = "";
+            var ptt_type = $("input[name='ptt_type']:checked").val();
+            var ptt_name = $("#ptt_name").val();
 
-            if (_ptt_type == 1) { //新
-                _ptt_url = "https://www.ptt.cc/bbs/" + _ptt_name + "/index.html";
-            } else if (_ptt_type == 2) { //熱
-                _ptt_url = "https://www.ptt.cc/bbs/" + _ptt_name + "/search?q=recommend%3A10";
-            } else if (_ptt_type == 3) { //爆
-                _ptt_url = "https://www.ptt.cc/bbs/" + _ptt_name + "/search?q=recommend%3A100";
-            } else if (_ptt_type == 4) { //推文
+            if (ptt_type == 1) { //新
+                ptt_url = "https://www.ptt.cc/bbs/" + ptt_name + "/index.html";
+            } else if (ptt_type == 2) { //熱
+                ptt_url = "https://www.ptt.cc/bbs/" + ptt_name + "/search?q=recommend%3A10";
+            } else if (ptt_type == 3) { //爆
+                ptt_url = "https://www.ptt.cc/bbs/" + ptt_name + "/search?q=recommend%3A100";
+            } else if (ptt_type == 4) { //推文
                 if (jQuery.trim($("#recommend").val()) != "") {
-                    _ptt_url = "https://www.ptt.cc/bbs/" + _ptt_name + "/search?q=recommend%3A" + $("#recommend").val();
+                    ptt_url = "https://www.ptt.cc/bbs/" + ptt_name + "/search?q=recommend%3A" + $("#recommend").val();
                 } else {
                     alert("請輸入推文數");
                 }
-            } else if (_ptt_type == 5) { //作者
+            } else if (ptt_type == 5) { //作者
                 if (jQuery.trim($("#author").val()) != "") {
-                    _ptt_url = "https://www.ptt.cc/bbs/" + _ptt_name + "/search?q=author%3A" + $("#author").val();
+                    ptt_url = "https://www.ptt.cc/bbs/" + ptt_name + "/search?q=author%3A" + $("#author").val();
                 } else {
                     alert("請輸入作者");
                 }
             } else { //完整標題
                 if (jQuery.trim($("#thread").val()) != "") {
-                    _ptt_url = "https://www.ptt.cc/bbs/" + _ptt_name + "/search?q=thread%3A" + $("#thread").val();
+                    ptt_url = "https://www.ptt.cc/bbs/" + ptt_name + "/search?q=thread%3A" + $("#thread").val();
                 } else {
                     alert("請輸入完整標題");
                 }
             }
 
-            if (_ptt_url != "") {
-                window.open(_ptt_url, '_blank');
+            if (ptt_url != "") {
+                window.open(ptt_url, '_blank');
             }
         }
 
         function random_ptt() {
-            alert("random3");
+            var random_ptt_index = Math.floor(Math.random() * $("#ptt_name option").length);
+            var random_ptt_name = $("#ptt_name").find('option').eq(random_ptt_index).text();
+            var ptt_url = "https://www.ptt.cc/bbs/" + random_ptt_name + "/search?q=recommend%3A10";
+            window.open(ptt_url, '_blank');
         }
 
-        //random_ptt
     </script>
 </body>
 </html>

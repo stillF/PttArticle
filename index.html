@@ -68,8 +68,11 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="form-group" style="margin-right:7px;">
+                        <div class="form-group input-group" style="margin-right:7px;">
                             <input class="form-control" id="recommend" type="number" min="1" max="100" value="10">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" onclick="clean_search_data('recommend')"><i class="far fa-trash-alt"></i></button>
+                            </span>
                         </div>
                         <div class="form-group">
                             <div class="radio">
@@ -79,8 +82,11 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="form-group" style="margin-right:7px;">
+                        <div class="form-group input-group" style="margin-right:7px;">
                             <input type="text" class="form-control" id="author">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" onclick="clean_search_data('author')"><i class="far fa-trash-alt"></i></button>
+                            </span>
                         </div>
                         <div style="margin-top: 15px;"></div>
                         <div class="form-group">
@@ -91,8 +97,11 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group input-group">
                             <input type="text" class="form-control" id="key_word">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" onclick="clean_search_data('key_word')"><i class="far fa-trash-alt"></i></button>
+                            </span>
                         </div>
                         <div class="form-group">
                             <div class="radio">
@@ -102,8 +111,11 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group input-group">
                             <input type="text" class="form-control" id="thread">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" onclick="clean_search_data('thread')"><i class="far fa-trash-alt"></i></button>
+                            </span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -315,6 +327,10 @@ $(&quot;.push&quot;).each(function () {
             var random_ptt_name = $("#ptt_name").find('option').eq(random_ptt_index).val();
             var ptt_url = "https://www.ptt.cc/bbs/" + random_ptt_name + "/search?q=recommend%3A10";
             window.open(ptt_url, '_new');
+        }
+
+        function clean_search_data(input_id) {
+            $("#"+input_id).val("");
         }
 
         function show_more_data() {

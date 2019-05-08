@@ -183,6 +183,7 @@
                             <option value="PokemonGO">pokemon版、寶可夢版</option>
                             <option value="PublicServan">公職版</option>
                             <option value="Q_ary">問卷版</option>
+                            <option value="S.H.E">S.H.E</option>
                             <option value="Salary">職場版</option>
                             <option value="single">單身版</option>
                             <option value="Soft_Job">soft版、軟體版</option>
@@ -295,25 +296,25 @@ $(&quot;.push&quot;).each(function () {
             var ptt_type = $("input[name='ptt_type']:checked").val();
             var ptt_name = $("#ptt_name").val();
 
-            if (ptt_type == 1) { //新
+            if (ptt_type === 1) { //新
                 ptt_url = "https://www.ptt.cc/bbs/" + ptt_name + "/index.html";
-            } else if (ptt_type == 2) { //熱
+            } else if (ptt_type === 2) { //熱
                 ptt_url = "https://www.ptt.cc/bbs/" + ptt_name + "/search?q=recommend%3A10";
-            } else if (ptt_type == 3) { //爆
+            } else if (ptt_type === 3) { //爆
                 ptt_url = "https://www.ptt.cc/bbs/" + ptt_name + "/search?q=recommend%3A100";
-            } else if (ptt_type == 4) { //推文
+            } else if (ptt_type === 4) { //推文
                 if (jQuery.trim($("#recommend").val()) != "") {
                     ptt_url = "https://www.ptt.cc/bbs/" + ptt_name + "/search?q=recommend%3A" + $("#recommend").val();
                 } else {
                     alert("請輸入「推文數」");
                 }
-            } else if (ptt_type == 5) { //作者
+            } else if (ptt_type === 5) { //作者
                 if (jQuery.trim($("#author").val()) != "") {
                     ptt_url = "https://www.ptt.cc/bbs/" + ptt_name + "/search?q=author%3A" + $("#author").val();
                 } else {
                     alert("請輸入「作者」");
                 }
-            } else if (ptt_type == 6) { //標題
+            } else if (ptt_type === 6) { //標題
                 if (jQuery.trim($("#key_word").val()) != "") {
                     ptt_url = "https://www.ptt.cc/bbs/" + ptt_name + "/search?q=" + $("#key_word").val();
                 } else {

@@ -293,7 +293,7 @@ $(&quot;.push&quot;).each(function () {
 
         function before_submit() {
             var ptt_url = "";
-            var ptt_type = $("input[name='ptt_type']:checked").val();
+            var ptt_type = parseInt($("input[name='ptt_type']:checked").val());
             var ptt_name = $("#ptt_name").val();
 
             if (ptt_type === 1) { //新

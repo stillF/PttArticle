@@ -262,20 +262,34 @@
                 <div class="modal-body">
                     <pre>
 //disp.cc
+
+//推文數
 let i = 1;
 $(&quot;.push_row&quot;).each(function () {
 	$(this).append('&lt;span style=&quot;float:left;margin-right:10px;&quot;&gt;' + i + ' &lt;/span&gt;');
 	i++;
 });
 
+//頁面捲至回文區
+$(&quot;html, body&quot;).animate({
+	scrollTop: $(&quot;.push_row&quot;).eq(0).offset().top - 40
+}, 1000);
+
 //------------------------------------------------------------------------------------
 
 //ptt.cc
+
+//推文數
 let i = 1;
 $(&quot;.push&quot;).each(function () {
 	$(this).append('&lt;span style=&quot;float:left;margin-right:10px;&quot;&gt;' + i + '&lt;/span&gt;');
 	i++;
 });
+
+//頁面捲至回文區
+$(&quot;html, body&quot;).animate({
+	scrollTop: $(&quot;.push&quot;).eq(0).offset().top - 40
+}, 1000);
                     </pre>
                 </div>
                 <div class="modal-footer">

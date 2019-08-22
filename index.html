@@ -7,9 +7,11 @@
     <link rel="stylesheet" type="text/css" href="/PttArticle/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/PttArticle/css/fontawesome-all.css">
     <link rel="stylesheet" type="text/css" href="/PttArticle/css/select2.css">
+    <link rel="stylesheet" type="text/css" href="/EditHtml/css/toastr.min.css">
     <script type="text/javascript" src="/PttArticle/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="/PttArticle/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/PttArticle/js/select2.js"></script>
+    <script type="text/javascript" src="/EditHtml/js/toastr.min.js"></script>
 </head>
 <body>
     <header>
@@ -261,6 +263,15 @@
                     <h4 class="modal-title">Ptt樓層</h4>
                 </div>
                 <div class="modal-body">
+                    <button type="button" class="btn btn-success btn-xs" onclick="btnCopy(1)">copy</button>
+                    <pre id="pre1">
+//推文數
+let i = 1;
+$(&quot;.push&quot;).each(function () {
+	$(this).append('&lt;span style=&quot;float:left;margin-right:10px;&quot;&gt;' + i + '&lt;/span&gt;');
+	i++;
+});
+                    </pre>
                     <pre>
 //ptt.cc
 
@@ -374,6 +385,16 @@ $(&quot;html, body&quot;).animate({
 
         function show_more_data() {
             $("#more_data_modal").modal("show");
+            }
+
+        function btnCopy(preID) {
+            var _pre = document.querySelector("#pre" + preID);
+            var _range = document.createRange();
+            _range.selectNode(_pre);
+            window.getSelection().addRange(_range);
+            document.execCommand('copy');
+            window.getSelection().removeAllRanges();
+            toastr.success("複製成功");
         }
 
     </script>

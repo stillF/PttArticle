@@ -397,17 +397,13 @@ $(&quot;html, body&quot;).animate({
         }
 
         function btnCopy(preID) {
-            //var _pre = document.querySelector("#pre" + preID);
-            //var _range = document.createRange();
-            //_range.selectNode(_pre);
-            //window.getSelection().addRange(_range);
-            //document.execCommand('copy');
-            //window.getSelection().removeAllRanges();
-            //toastr.success("複製成功");
-	        var html_textarea = document.getElementById("#pre" + preID);
-	        html_textarea.select();
-	        document.execCommand("Copy");
-	        toastr.success("複製成功");
+            var _pre = document.querySelector("#pre" + preID);
+            var _range = document.createRange();
+            _range.selectNode(_pre);
+            window.getSelection().addRange(_range);
+            document.execCommand('copy');
+            window.getSelection().removeAllRanges();
+            toastr.success("複製成功");
         }
 
     </script>

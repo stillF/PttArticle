@@ -263,10 +263,9 @@
                     <h4 class="modal-title">Ptt樓層</h4>
                 </div>
                 <div class="modal-body">
-                    ptt.cc
                     <button type="button" class="btn btn-success btn-xs" style="margin-bottom:10px;" onclick="btnCopy(1)">copy</button>
 <pre id="pre1" style="margin-bottom:20px;">
-//推文數
+//ptt.cc推文數
 let i = 1;
 $(&quot;.push&quot;).each(function () {
 	$(this).append('&lt;span style=&quot;float:left;margin-right:10px;&quot;&gt;' + i + '&lt;/span&gt;');
@@ -275,24 +274,23 @@ $(&quot;.push&quot;).each(function () {
 
                     <button type="button" class="btn btn-success btn-xs" style="margin-bottom:10px;" onclick="btnCopy(2)">copy</button>
 <pre id="pre2" style="margin-bottom:20px;">
-//頁面捲至回文區
+//ptt.cc頁面捲至回文區
 $(&quot;html, body&quot;).animate({
 	scrollTop: $(&quot;.push&quot;).eq(0).offset().top - 40
 }, 1000);</pre>
 
-                    disp.cc
                     <button type="button" class="btn btn-success btn-xs" style="margin-bottom:10px;" onclick="btnCopy(3)">copy</button>
 <pre id="pre3" style="margin-bottom:20px;">
-//推文數
+//disp.cc推文數
 let i = 1;
 $(&quot;.push_row&quot;).each(function () {
-	$(this).append('&lt;span style=&quot;float:left;margin-right:10px;&quot;&gt;' + i + '&lt;/span&gt;');
-	i++;
+    $(this).append('&lt;span style=&quot;float:left;margin-right:10px;&quot;&gt;' + i + '&lt;/span&gt;');
+    i++;
 });</pre>
 
                     <button type="button" class="btn btn-success btn-xs" style="margin-bottom:10px;" onclick="btnCopy(4)">copy</button>
 <pre id="pre4" style="margin-bottom:20px;">
-//頁面捲至回文區
+//disp.cc頁面捲至回文區
 $(&quot;html, body&quot;).animate({
 	scrollTop: $(&quot;.push_row&quot;).eq(0).offset().top - 40
 }, 1000);</pre>
@@ -399,13 +397,17 @@ $(&quot;html, body&quot;).animate({
         }
 
         function btnCopy(preID) {
-            var _pre = document.querySelector("#pre" + preID);
-            var _range = document.createRange();
-            _range.selectNode(_pre);
-            window.getSelection().addRange(_range);
-            document.execCommand('copy');
-            window.getSelection().removeAllRanges();
-            toastr.success("複製成功");
+            //var _pre = document.querySelector("#pre" + preID);
+            //var _range = document.createRange();
+            //_range.selectNode(_pre);
+            //window.getSelection().addRange(_range);
+            //document.execCommand('copy');
+            //window.getSelection().removeAllRanges();
+            //toastr.success("複製成功");
+	        var html_textarea = document.getElementById("#pre" + preID);
+	        html_textarea.select();
+	        document.execCommand("Copy");
+	        toastr.success("複製成功");
         }
 
     </script>

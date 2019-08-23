@@ -323,11 +323,9 @@ $(&quot;html, body&quot;).animate({
             let pttUrl = "";
             let pttType = parseInt($("input[name='pttType']:checked").val());
             let pttName = $("#pttName").val();
-		 console.log(pttType);
 
             switch (pttType) {
                 case 2://熱
-			     console.log("hot");
                     pttUrl = "https://www.ptt.cc/bbs/" + pttName + "/search?q=recommend%3A10";
                     break;
                 case 3://爆
@@ -351,13 +349,12 @@ $(&quot;html, body&quot;).animate({
                     }
                     break;
                 case 7://完整標題
-			    console.log("IN");
                     if (jQuery.trim($("#thread").val()) !== "") {
                         pttUrl = "https://www.ptt.cc/bbs/" + pttName + "/search?q=thread%3A" + $("#thread").val();
-			     console.log(pttUrl);
                     } else {
                         toastr.error("請輸入「完整標題」");
                     }
+                    break;
                 case 4://推文
                     if (jQuery.trim($("#recommend").val()) !== "") {
                         pttUrl = "https://www.ptt.cc/bbs/" + pttName + "/search?q=recommend%3A" + $("#recommend").val();
@@ -371,8 +368,7 @@ $(&quot;html, body&quot;).animate({
             }
 
             if (pttUrl !== "") {
-		    console.log(pttUrl);
-                //window.open(pttUrl, '_new');
+                window.open(pttUrl, '_new');
             }
         }
 

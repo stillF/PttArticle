@@ -373,7 +373,7 @@ $(&quot;html, body&quot;).animate({
         }
 
         function searchRandomPtt() {
-            let randomSeed = Math.floor(Math.random() * $("#pttName option").length);
+            let randomSeed = Math.floor(Math.random() * $("#pttName > option").length);
             let randomPtt = $("#pttName").find('option').eq(randomSeed).val();
             let pttUrl = "https://www.ptt.cc/bbs/" + randomPtt + "/search?q=recommend%3A10";
             window.open(pttUrl, '_new');

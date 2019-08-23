@@ -42,7 +42,7 @@
                         <div class="form-group" style="margin-right:7px;">
                             <div class="radio">
                                 <label class="radio-inline control-label">
-                                    <input type="radio" id="ptt_type" name="ptt_type" value="1">
+                                    <input type="radio" id="pttType" name="pttType" value="1">
                                     新
                                 </label>
                             </div>
@@ -50,7 +50,7 @@
                         <div class="form-group" style="margin-right:7px;">
                             <div class="radio">
                                 <label class="radio-inline control-label">
-                                    <input type="radio" id="ptt_type" name="ptt_type" value="2" checked>
+                                    <input type="radio" id="pttType" name="pttType" value="2" checked>
                                     熱
                                 </label>
                             </div>
@@ -58,7 +58,7 @@
                         <div class="form-group" style="margin-right:7px;">
                             <div class="radio">
                                 <label class="radio-inline control-label">
-                                    <input type="radio" id="ptt_type" name="ptt_type" value="3">
+                                    <input type="radio" id="pttType" name="pttType" value="3">
                                     爆
                                 </label>
                             </div>
@@ -66,7 +66,7 @@
                         <div class="form-group">
                             <div class="radio">
                                 <label class="radio-inline control-label">
-                                    <input type="radio" id="ptt_type" name="ptt_type" value="4">
+                                    <input type="radio" id="pttType" name="pttType" value="4">
                                     推文
                                 </label>
                             </div>
@@ -74,13 +74,13 @@
                         <div class="form-group input-group" style="margin-right:7px;">
                             <input class="form-control" id="recommend" type="number" min="1" max="100" value="10">
                             <span class="input-group-btn">
-                                <button class="btn btn-default" type="button" onclick="clean_search_data('recommend')"><i class="far fa-trash-alt"></i></button>
+                                <button class="btn btn-default" type="button" onclick="cleanSearchBar('recommend')"><i class="far fa-trash-alt"></i></button>
                             </span>
                         </div>
                         <div class="form-group">
                             <div class="radio">
                                 <label class="radio-inline control-label">
-                                    <input type="radio" id="ptt_type" name="ptt_type" value="5">
+                                    <input type="radio" id="pttType" name="pttType" value="5">
                                     作者
                                 </label>
                             </div>
@@ -88,28 +88,28 @@
                         <div class="form-group input-group" style="margin-right:7px;">
                             <input type="text" class="form-control" id="author">
                             <span class="input-group-btn">
-                                <button class="btn btn-default" type="button" onclick="clean_search_data('author')"><i class="far fa-trash-alt"></i></button>
+                                <button class="btn btn-default" type="button" onclick="cleanSearchBar('author')"><i class="far fa-trash-alt"></i></button>
                             </span>
                         </div>
                         <div style="margin-top: 15px;"></div>
                         <div class="form-group">
                             <div class="radio">
                                 <label class="radio-inline control-label">
-                                    <input type="radio" id="ptt_type" name="ptt_type" value="6">
+                                    <input type="radio" id="pttType" name="pttType" value="6">
                                     標題
                                 </label>
                             </div>
                         </div>
                         <div class="form-group input-group" style="margin-right:7px;">
-                            <input type="text" class="form-control" id="key_word">
+                            <input type="text" class="form-control" id="keyWord">
                             <span class="input-group-btn">
-                                <button class="btn btn-default" type="button" onclick="clean_search_data('key_word')"><i class="far fa-trash-alt"></i></button>
+                                <button class="btn btn-default" type="button" onclick="cleanSearchBar('keyWord')"><i class="far fa-trash-alt"></i></button>
                             </span>
                         </div>
                         <div class="form-group">
                             <div class="radio">
                                 <label class="radio-inline control-label">
-                                    <input type="radio" id="ptt_type" name="ptt_type" value="7">
+                                    <input type="radio" id="pttType" name="pttType" value="7">
                                     完整標題
                                 </label>
                             </div>
@@ -117,13 +117,13 @@
                         <div class="form-group input-group" style="margin-right:7px;">
                             <input type="text" class="form-control" id="thread">
                             <span class="input-group-btn">
-                                <button class="btn btn-default" type="button" onclick="clean_search_data('thread')"><i class="far fa-trash-alt"></i></button>
+                                <button class="btn btn-default" type="button" onclick="cleanSearchBar('thread')"><i class="far fa-trash-alt"></i></button>
                             </span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label></label>
-                        <select class="form-control" id="ptt_name">
+                        <select class="form-control" id="pttName">
                             <option value="Actuary">精打細算版</option>
                             <option value="Android">android版</option>
                             <option value="ask">ask版、問版</option>
@@ -223,7 +223,7 @@
                             <option value="WomenTalk">女版</option>
                             <option value="Zastrology">星座版</option>
                         </select>
-                        <button type="button" class="btn btn-primary btn-block" style="margin-top:30px;" onclick="before_submit();">送出</button>
+                        <button type="button" class="btn btn-primary btn-block" style="margin-top:30px;" onclick="searchPtt();">送出</button>
                     </div>
                 </div>
             </div>
@@ -231,7 +231,7 @@
                 <div class="panel-heading">
                     常用看版
                     <div class="pull-right">
-                        <span class="label label-success" style="cursor:pointer;" onclick="show_more_data()">More</span>
+                        <span class="label label-success" style="cursor:pointer;" onclick="showMoreModal()">More</span>
                     </div>
                 </div>
                 <div class="panel-body">
@@ -242,7 +242,7 @@
                         <a href="https://disp.cc/b/PttHot" target="_blank" class="btn btn-default">熱門文章</a>
                     </div>
                     <div class="btn-group" role="group" style="margin-right:7px;margin-bottom:10px;">
-                        <button type="button" class="btn btn-default" onclick="random_ptt()">隨機版</button>
+                        <button type="button" class="btn btn-default" onclick="searchRandomPtt()">隨機版</button>
                     </div>
                     <div class="btn-group" role="group" style="margin-right:7px;margin-bottom:10px;">
                         <a href="https://www.ptt.cc/bbs/index.html" target="_blank" class="btn btn-default">熱門看版</a>
@@ -255,15 +255,15 @@
         </div>
     </div>
 
-    <div class="modal fade bs-example-modal-lg" id="more_data_modal">
+    <div class="modal fade bs-example-modal-lg" id="moreModal">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Ptt樓層</h4>
+                    <h4 class="modal-title">Ptt</h4>
                 </div>
                 <div class="modal-body">
-                    <button type="button" class="btn btn-success btn-xs" onclick="btnCopy(1)">copy</button>
+                    <button type="button" class="btn btn-success btn-xs" onclick="copyPreTxt(1)">copy</button>
 <pre id="pre1" style="margin-bottom:20px;">
 //ptt.cc推文數
 let i = 1;
@@ -272,14 +272,14 @@ $(&quot;.push&quot;).each(function () {
 	i++;
 });</pre>
 
-                    <button type="button" class="btn btn-success btn-xs" onclick="btnCopy(2)">copy</button>
+                    <button type="button" class="btn btn-success btn-xs" onclick="copyPreTxt(2)">copy</button>
 <pre id="pre2" style="margin-bottom:20px;">
 //ptt.cc頁面捲至回文區
 $(&quot;html, body&quot;).animate({
 	scrollTop: $(&quot;.push&quot;).eq(0).offset().top - 40
 }, 1000);</pre>
 
-                    <button type="button" class="btn btn-success btn-xs" onclick="btnCopy(3)">copy</button>
+                    <button type="button" class="btn btn-success btn-xs" onclick="copyPreTxt(3)">copy</button>
 <pre id="pre3" style="margin-bottom:20px;">
 //disp.cc推文數
 let i = 1;
@@ -288,7 +288,7 @@ $(&quot;.push_row&quot;).each(function () {
     i++;
 });</pre>
 
-                    <button type="button" class="btn btn-success btn-xs" onclick="btnCopy(4)">copy</button>
+                    <button type="button" class="btn btn-success btn-xs" onclick="copyPreTxt(4)">copy</button>
 <pre id="pre4" style="margin-bottom:20px;">
 //disp.cc頁面捲至回文區
 $(&quot;html, body&quot;).animate({
@@ -311,73 +311,83 @@ $(&quot;html, body&quot;).animate({
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#ptt_name").select2({
+            $("#pttName").select2({
                 width: "100%"
             });
 
-            $("#ptt_name").change(function () {
-                before_submit();
+            $("#pttName").change(function () {
+                searchPtt();
             });
         });
 
-        function before_submit() {
-            var ptt_url = "";
-            var ptt_type = parseInt($("input[name='ptt_type']:checked").val());
-            var ptt_name = $("#ptt_name").val();
+        function searchPtt() {
+            let pttUrl = "";
+            let pttType = parseInt($("input[name='pttType']:checked").val());
+            let pttName = $("#pttName").val();
 
-            if (ptt_type === 1) { //新
-                ptt_url = "https://www.ptt.cc/bbs/" + ptt_name + "/index.html";
-            } else if (ptt_type === 2) { //熱
-                ptt_url = "https://www.ptt.cc/bbs/" + ptt_name + "/search?q=recommend%3A10";
-            } else if (ptt_type === 3) { //爆
-                ptt_url = "https://www.ptt.cc/bbs/" + ptt_name + "/search?q=recommend%3A100";
-            } else if (ptt_type === 4) { //推文
-                if (jQuery.trim($("#recommend").val()) != "") {
-                    ptt_url = "https://www.ptt.cc/bbs/" + ptt_name + "/search?q=recommend%3A" + $("#recommend").val();
-                } else {
-                    alert("請輸入「推文數」");
-                }
-            } else if (ptt_type === 5) { //作者
-                if (jQuery.trim($("#author").val()) != "") {
-                    ptt_url = "https://www.ptt.cc/bbs/" + ptt_name + "/search?q=author%3A" + $("#author").val();
-                } else {
-                    alert("請輸入「作者」");
-                }
-            } else if (ptt_type === 6) { //標題
-                if (jQuery.trim($("#key_word").val()) != "") {
-                    ptt_url = "https://www.ptt.cc/bbs/" + ptt_name + "/search?q=" + $("#key_word").val();
-                } else {
-                    alert("請輸入「標題」");
-                }
-            } else { //完整標題
-                if (jQuery.trim($("#thread").val()) != "") {
-                    ptt_url = "https://www.ptt.cc/bbs/" + ptt_name + "/search?q=thread%3A" + $("#thread").val();
-                } else {
-                    alert("請輸入「完整標題」");
-                }
+            switch (pttType) {
+                case 2://熱
+                    pttUrl = "https://www.ptt.cc/bbs/" + pttName + "/search?q=recommend%3A10";
+                    break;
+                case 3://爆
+                    pttUrl = "https://www.ptt.cc/bbs/" + pttName + "/search?q=recommend%3A100";
+                    break;
+                case 1://新
+                    pttUrl = "https://www.ptt.cc/bbs/" + pttName + "/index.html";
+                    break;
+                case 5://作者
+                    if (jQuery.trim($("#author").val()) !== "") {
+                        pttUrl = "https://www.ptt.cc/bbs/" + pttName + "/search?q=author%3A" + $("#author").val();
+                    } else {
+                        toastr.error("請輸入「作者」");
+                    }
+                    break;
+                case 6://標題
+                    if (jQuery.trim($("#keyWord").val()) !== "") {
+                        pttUrl = "https://www.ptt.cc/bbs/" + pttName + "/search?q=" + $("#keyWord").val();
+                    } else {
+                        toastr.error("請輸入「標題」");
+                    }
+                    break;
+                case 7://完整標題
+                    if (jQuery.trim($("#thread").val()) !== "") {
+                        pttUrl = "https://www.ptt.cc/bbs/" + pttName + "/search?q=thread%3A" + $("#thread").val();
+                    } else {
+                        toastr.error("請輸入「完整標題」");
+                    }
+                case 4://推文
+                    if (jQuery.trim($("#recommend").val()) !== "") {
+                        pttUrl = "https://www.ptt.cc/bbs/" + pttName + "/search?q=recommend%3A" + $("#recommend").val();
+                    } else {
+                        toastr.error("請輸入「推文數」");
+                    }
+                    break;
+                default:
+                    pttUrl = "";
+                    break;
             }
 
-            if (ptt_url != "") {
-                window.open(ptt_url, '_new');
+            if (pttUrl !== "") {
+                window.open(pttUrl, '_new');
             }
         }
 
-        function random_ptt() {
-            var random_ptt_index = Math.floor(Math.random() * $("#ptt_name option").length);
-            var random_ptt_name = $("#ptt_name").find('option').eq(random_ptt_index).val();
-            var ptt_url = "https://www.ptt.cc/bbs/" + random_ptt_name + "/search?q=recommend%3A10";
-            window.open(ptt_url, '_new');
+        function searchRandomPtt() {
+            let randomSeed = Math.floor(Math.random() * $("#pttName option").length);
+            let randomPtt = $("#pttName").find('option').eq(randomSeed).val();
+            let pttUrl = "https://www.ptt.cc/bbs/" + randomPtt + "/search?q=recommend%3A10";
+            window.open(pttUrl, '_new');
         }
 
-        function clean_search_data(input_id) {
-            $("#" + input_id).val("");
+        function cleanSearchBar(inputID) {
+            $("#" + inputID).val("");
         }
 
-        function show_more_data() {
-            $("#more_data_modal").modal("show");
+        function showMoreModal() {
+            $("#moreModal").modal("show");
         }
 
-        function btnCopy(preID) {
+        function copyPreTxt(preID) {
             var _pre = document.querySelector("#pre" + preID);
             var _range = document.createRange();
             _range.selectNode(_pre);

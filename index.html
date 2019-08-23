@@ -349,10 +349,10 @@ $(&quot;html, body&quot;).animate({
                     }
                     break;
                 case 7://完整標題
-			    toastr.error("IN");
+			    console.log("IN");
                     if (jQuery.trim($("#thread").val()) !== "") {
                         pttUrl = "https://www.ptt.cc/bbs/" + pttName + "/search?q=thread%3A" + $("#thread").val();
-			     toastr.error(pttUrl);
+			     console.log(pttUrl);
                     } else {
                         toastr.error("請輸入「完整標題」");
                     }

@@ -265,11 +265,10 @@
                 <div class="modal-body">
                     <button type="button" class="btn btn-success btn-xs" onclick="copyPreTxt(1)">copy</button>
 <pre id="pre1" style="margin-bottom:20px;">
-//ptt.cc推文數
 (function () {
     &#39;use strict&#39;;
     let i = 1;
-    $(&quot;.push&quot;).each(function () {
+    $(&quot;span:contains(&#39;文章網址&#39;)&quot;).nextAll(&#39;.push&#39;).each(function () {
         $(this).append(&#39;&lt;span style=&quot;float:left;margin-right:10px;&quot;&gt;&#39; + i + &#39;&lt;/span&gt;&#39;);
         i++;
     });
@@ -279,7 +278,7 @@
 <pre id="pre2" style="margin-bottom:20px;">
 //ptt.cc頁面捲至回文區
 $(&quot;html, body&quot;).animate({
-	scrollTop: $(&quot;.push&quot;).eq(0).offset().top - 40
+	scrollTop: $(&quot;span:contains(&#39;文章網址&#39;)&quot;).next(&#39;.push&#39;).offset().top - 40
 }, 1000);</pre>
 
                     <button type="button" class="btn btn-success btn-xs" onclick="copyPreTxt(3)">copy</button>
@@ -306,12 +305,15 @@ $(&quot;html, body&quot;).animate({
 <pre id="pre4" style="margin-bottom:20px;">
 //disp.cc推文數
 (function () {
-    &#39;use strict&#39;;
-    let i = 1;
-    $(&quot;.push_row&quot;).each(function () {
-        $(this).append(&#39;&lt;span style=&quot;float:left;margin-right:10px;&quot;&gt;&#39; + i + &#39;&lt;/span&gt;&#39;);
-        i++;
-    });
+	&#39;use strict&#39;;
+	let i = 1 , _spanClass = &quot;&quot;;
+	$(&quot;.ptt-push-group &gt; .push_row &gt; span&quot;).each(function () {
+		_spanClass = $(this).attr(&#39;class&#39;);
+		if (_spanClass === &quot;fg131&quot; || _spanClass === &quot;fg137&quot;) {
+			$(this).append(&#39;&lt;span style=&quot;float:left;margin-right:10px;&quot;&gt;&#39; + i + &#39;&lt;/span&gt;&#39;);
+			i++;
+		}
+	});
 })();</pre>
 
                     <button type="button" class="btn btn-success btn-xs" onclick="copyPreTxt(5)">copy</button>
@@ -328,10 +330,12 @@ $(&quot;#read_content&quot;).animate({
     &#39;use strict&#39;;
     function getPushContent(SEARCH_USER_ID) {
         let _userId = &quot;&quot;, _pushContent = &quot;&quot;;
-        $(&quot;.push_row&quot;).each(function () {
-            _userId = jQuery.trim($(this).find(&quot;.fg133&quot;).text());
+        $(&quot;.ptt-push-group .push_row&quot;).each(function () {
+            _userId = jQuery.trim($(this).find(&quot;.fg133:eq(0)&quot;).text());
             if (_userId === jQuery.trim(SEARCH_USER_ID)) {
-                _pushContent += _userId + &quot;&quot; + $(this).find(&quot;.fgY0&quot;).text() + &quot;\n&quot;;
+                $(this).find(&quot;.fgY0&quot;).each(function () {
+                    _pushContent += _userId + &quot;&quot; +$(this).text()+&quot;\n&quot;;
+                });
             }
         });
         return _pushContent;

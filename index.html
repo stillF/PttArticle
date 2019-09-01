@@ -284,20 +284,39 @@ $(&quot;html, body&quot;).animate({
 
                     <button type="button" class="btn btn-success btn-xs" onclick="copyPreTxt(3)">copy</button>
 <pre id="pre3" style="margin-bottom:20px;">
-//ptt.cc搜尋推文id
+//ptt.cc推文整理
 (function () {
     &#39;use strict&#39;;
-    function getPushContent(SEARCH_USER_ID) {
-        let _userId = &quot;&quot;, _pushContent = &quot;&quot;;
+    function getPushData(SEARCH_USER_ID) {
+        let pushData = [];
+        let _userId = &quot;&quot;, _pushContent = &quot;&quot;, _searchIndex = -1;
         $(&quot;.push&quot;).each(function () {
             _userId = jQuery.trim($(this).find(&quot;.push-userid&quot;).text());
-            if (_userId === jQuery.trim(SEARCH_USER_ID)) {
-                _pushContent += _userId + &quot;&quot; + $(this).find(&quot;.push-content&quot;).text() + &quot;\n&quot;;
+            _searchIndex = pushData.findIndex((obj =&gt; obj.userId === _userId));
+            if (_searchIndex !== -1) {
+                _pushContent = pushData[_searchIndex][&quot;pushContent&quot;];
+                _pushContent += ($(this).find(&quot;.push-content&quot;).text()).replace(&quot;: &quot;, &quot;&quot;) + &quot;\n&quot;;
+                pushData[_searchIndex][&quot;pushContent&quot;] = _pushContent;
+            } else {
+                pushData.push({
+                    userId: _userId,
+                    pushContent: ($(this).find(&quot;.push-content&quot;).text()).replace(&quot;: &quot;, &quot;&quot;) + &quot;\n&quot;
+                });
             }
         });
-        return _pushContent;
+        if (jQuery.trim(SEARCH_USER_ID) !== &quot;&quot;) {
+            _searchIndex = pushData.findIndex((obj =&gt; obj.userId === SEARCH_USER_ID));
+            console.log(&quot;【&quot; + pushData[_searchIndex][&quot;userId&quot;] + &quot;】&quot;);
+            console.log(pushData[_searchIndex][&quot;pushContent&quot;]);
+        } else {
+            let i = 0, iMax = pushData.length;
+            for (i; i &lt; iMax; i++) {
+                console.log(&quot;【&quot; + pushData[i][&quot;userId&quot;] + &quot;】&quot;);
+                console.log(pushData[i][&quot;pushContent&quot;]);
+            }
+        }
     }
-    console.log(getPushContent(&quot;&quot;));
+    getPushData(&quot;&quot;);
 })();</pre>
 
                     <hr />
@@ -326,22 +345,46 @@ $(&quot;#read_content&quot;).animate({
 
                     <button type="button" class="btn btn-success btn-xs" onclick="copyPreTxt(6)">copy</button>
 <pre id="pre6" style="margin-bottom:20px;">
-//disp.cc搜尋推文id
+//disp.cc推文整理
 (function () {
-    &#39;use strict&#39;;
-    function getPushContent(SEARCH_USER_ID) {
-        let _userId = &quot;&quot;, _pushContent = &quot;&quot;;
-        $(&quot;.ptt-push-group .push_row&quot;).each(function () {
-            _userId = jQuery.trim($(this).find(&quot;.fg133:eq(0)&quot;).text());
-            if (_userId === jQuery.trim(SEARCH_USER_ID)) {
-                $(this).find(&quot;.fgY0&quot;).each(function () {
-                    _pushContent += _userId + &quot;&quot; +$(this).text()+&quot;\n&quot;;
-                });
-            }
-        });
-        return _pushContent;
-    }
-    console.log(getPushContent(&quot;&quot;));
+	&#39;use strict&#39;;
+	function getPushData(SEARCH_USER_ID) {
+		let pushData = [];
+		let _userId = &quot;&quot;, _pushContent = &quot;&quot;, _searchIndex = -1;
+		$(&quot;.ptt-push-group .push_row&quot;).each(function () {
+			_userId = jQuery.trim($(this).find(&quot;.fg133:eq(0)&quot;).text());
+			_searchIndex = pushData.findIndex((obj =&gt; obj.userId === _userId));
+			if (_searchIndex !== -1) {
+				_pushContent = pushData[_searchIndex][&quot;pushContent&quot;];
+				$(this).find(&quot;.fgY0&quot;).each(function () {
+					_pushContent += ($(this).text()).replace(&quot;: &quot;, &quot;&quot;) + &quot;\n&quot;;
+				});
+				pushData[_searchIndex][&quot;pushContent&quot;] = _pushContent;
+			} else {
+				_pushContent = &quot;&quot;;
+				$(this).find(&quot;.fgY0&quot;).each(function () {
+					_pushContent += ($(this).text()).replace(&quot;: &quot;, &quot;&quot;) + &quot;\n&quot;;
+				});
+				pushData.push({
+					userId: _userId,
+					pushContent: _pushContent
+				});
+			}
+		});
+		if (jQuery.trim(SEARCH_USER_ID) !== &quot;&quot;) {
+			_searchIndex = pushData.findIndex((obj =&gt; obj.userId === SEARCH_USER_ID));
+			console.log(&quot;【&quot; + pushData[_searchIndex][&quot;userId&quot;] + &quot;】&quot;);
+			console.log(pushData[_searchIndex][&quot;pushContent&quot;]);
+		} else {
+			let i = 0,
+			iMax = pushData.length;
+			for (i; i &lt; iMax; i++) {
+				console.log(&quot;【&quot; + pushData[i][&quot;userId&quot;] + &quot;】&quot;);
+				console.log(pushData[i][&quot;pushContent&quot;]);
+			}
+		}
+	}
+	getPushData(&quot;&quot;);
 })();</pre>
 
                 </div>

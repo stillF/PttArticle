@@ -290,37 +290,44 @@ $(&quot;html, body&quot;).animate({
 <pre id="pre3" style="margin-bottom:20px;">
 //ptt.cc推文整理
 (function () {
-    &#39;use strict&#39;;
-    function getPushData(SEARCH_USER_ID) {
-        let pushData = [];
-        let _userId = &quot;&quot;, _pushContent = &quot;&quot;, _searchIndex = -1;
-        $(&quot;.push&quot;).each(function () {
-            _userId = jQuery.trim($(this).find(&quot;.push-userid&quot;).text());
-            _searchIndex = pushData.findIndex((obj =&gt; obj.userId === _userId));
-            if (_searchIndex !== -1) {
-                _pushContent = pushData[_searchIndex][&quot;pushContent&quot;];
-                _pushContent += ($(this).find(&quot;.push-content&quot;).text()).replace(&quot;: &quot;, &quot;&quot;) + &quot;\n&quot;;
-                pushData[_searchIndex][&quot;pushContent&quot;] = _pushContent;
-            } else {
-                pushData.push({
-                    userId: _userId,
-                    pushContent: ($(this).find(&quot;.push-content&quot;).text()).replace(&quot;: &quot;, &quot;&quot;) + &quot;\n&quot;
-                });
-            }
-        });
-        if (jQuery.trim(SEARCH_USER_ID) !== &quot;&quot;) {
-            _searchIndex = pushData.findIndex((obj =&gt; obj.userId === SEARCH_USER_ID));
-            console.log(&quot;【&quot; + pushData[_searchIndex][&quot;userId&quot;] + &quot;】&quot;);
-            console.log(pushData[_searchIndex][&quot;pushContent&quot;]);
-        } else {
-            let i = 0, iMax = pushData.length;
-            for (i; i &lt; iMax; i++) {
-                console.log(&quot;【&quot; + pushData[i][&quot;userId&quot;] + &quot;】&quot;);
-                console.log(pushData[i][&quot;pushContent&quot;]);
-            }
-        }
-    }
-    getPushData(&quot;&quot;);
+	&#39;use strict&#39;;
+	function getPushData(SEARCH_USER_ID) {
+		let _pushData = [];
+		let _userId = &quot;&quot;;
+		let _pushContent = &quot;&quot;;
+		let _searchIndex = -1;
+		let _html = &quot;&quot;;
+		$(&quot;.push&quot;).each(function () {
+			_userId = jQuery.trim($(this).find(&quot;.push-userid&quot;).text());
+			_searchIndex = _pushData.findIndex((obj =&gt; obj.userId === _userId));
+			if (_searchIndex !== -1) {
+				_pushContent = _pushData[_searchIndex][&quot;pushContent&quot;];
+				_pushContent += ($(this).find(&quot;.push-content&quot;).text()).replace(&quot;: &quot;, &quot;&quot;) + &quot;&lt;/br&gt;&quot;;
+				_pushData[_searchIndex][&quot;pushContent&quot;] = _pushContent;
+			} else {
+				_pushData.push({
+					userId: _userId,
+					pushContent: ($(this).find(&quot;.push-content&quot;).text()).replace(&quot;: &quot;, &quot;&quot;) + &quot;&lt;/br&gt;&quot;
+				});
+			}
+		});
+		if (jQuery.trim(SEARCH_USER_ID) !== &quot;&quot;) {
+			_searchIndex = _pushData.findIndex((obj =&gt; obj.userId === SEARCH_USER_ID));
+			_html += &quot;【&quot; + _pushData[_searchIndex][&quot;userId&quot;] + &quot;】&lt;/br&gt;&quot; + _pushData[_searchIndex][&quot;pushContent&quot;];
+		} else {
+			let i = 0;
+			let iMax = _pushData.length;
+			let _text = &quot;&quot;;
+			for (i; i &lt; iMax; i++) {
+				_text += &quot;# &quot; + (i + 1) + &quot;【&quot; + _pushData[i][&quot;userId&quot;] + &quot;】&lt;/br&gt;&quot; + _pushData[i][&quot;pushContent&quot;] + &quot;&lt;/br&gt;&quot;;
+			}
+			_html = &quot;&lt;!DOCTYPE html&gt;&lt;body&gt;&quot; + _text + &quot;&lt;/body&gt;&quot;;
+		}
+		if (_html !== &quot;&quot;) {
+			window.open(&#39;blankPage.html&#39;).document.write(_html);
+		}
+	}
+	getPushData();
 })();</pre>
 
                     <hr />
@@ -353,39 +360,45 @@ $(&quot;#read_content&quot;).animate({
 (function () {
 	&#39;use strict&#39;;
 	function getPushData(SEARCH_USER_ID) {
-		let pushData = [];
-		let _userId = &quot;&quot;, _pushContent = &quot;&quot;, _searchIndex = -1;
+		let _pushData = [];
+		let _userId = &quot;&quot;;
+		let _pushContent = &quot;&quot;;
+		let _searchIndex = -1;
+		let _html = &quot;&quot;;
 		$(&quot;.ptt-push-group .push_row&quot;).each(function () {
 			_userId = jQuery.trim($(this).find(&quot;.fg133:eq(0)&quot;).text());
-			_searchIndex = pushData.findIndex((obj =&gt; obj.userId === _userId));
+			_searchIndex = _pushData.findIndex((obj =&gt; obj.userId === _userId));
 			if (_searchIndex !== -1) {
-				_pushContent = pushData[_searchIndex][&quot;pushContent&quot;];
+				_pushContent = _pushData[_searchIndex][&quot;pushContent&quot;];
 				$(this).find(&quot;.fgY0&quot;).each(function () {
-					_pushContent += ($(this).text()).replace(&quot;: &quot;, &quot;&quot;) + &quot;\n&quot;;
+					_pushContent += ($(this).text()).replace(&quot;: &quot;, &quot;&quot;) + &quot;&lt;/br&gt;&quot;;
 				});
-				pushData[_searchIndex][&quot;pushContent&quot;] = _pushContent;
+				_pushData[_searchIndex][&quot;pushContent&quot;] = _pushContent;
 			} else {
 				_pushContent = &quot;&quot;;
 				$(this).find(&quot;.fgY0&quot;).each(function () {
-					_pushContent += ($(this).text()).replace(&quot;: &quot;, &quot;&quot;) + &quot;\n&quot;;
+					_pushContent += ($(this).text()).replace(&quot;: &quot;, &quot;&quot;) + &quot;&lt;/br&gt;&quot;;
 				});
-				pushData.push({
+				_pushData.push({
 					userId: _userId,
 					pushContent: _pushContent
 				});
 			}
 		});
 		if (jQuery.trim(SEARCH_USER_ID) !== &quot;&quot;) {
-			_searchIndex = pushData.findIndex((obj =&gt; obj.userId === SEARCH_USER_ID));
-			console.log(&quot;【&quot; + pushData[_searchIndex][&quot;userId&quot;] + &quot;】&quot;);
-			console.log(pushData[_searchIndex][&quot;pushContent&quot;]);
+			_searchIndex = _pushData.findIndex((obj =&gt; obj.userId === SEARCH_USER_ID));
+			_html += &quot;【&quot; + _pushData[_searchIndex][&quot;userId&quot;] + &quot;】&lt;/br&gt;&quot; + _pushData[_searchIndex][&quot;pushContent&quot;];
 		} else {
-			let i = 0,
-			iMax = pushData.length;
+			let i = 0;
+			let iMax = _pushData.length;
+			let _text = &quot;&quot;;
 			for (i; i &lt; iMax; i++) {
-				console.log(&quot;【&quot; + pushData[i][&quot;userId&quot;] + &quot;】&quot;);
-				console.log(pushData[i][&quot;pushContent&quot;]);
+				_text += &quot;# &quot; + (i + 1) + &quot;【&quot; + _pushData[i][&quot;userId&quot;] + &quot;】&lt;/br&gt;&quot; + _pushData[i][&quot;pushContent&quot;] + &quot;&lt;/br&gt;&quot;;
 			}
+			_html = &quot;&lt;!DOCTYPE html&gt;&lt;body&gt;&quot; + _text + &quot;&lt;/body&gt;&quot;;
+		}
+		if (_html !== &quot;&quot;) {
+			window.open(&#39;blankPage.html&#39;).document.write(_html);
 		}
 	}
 	getPushData(&quot;&quot;);

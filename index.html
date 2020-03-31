@@ -365,7 +365,7 @@ $(&quot;#read_content&quot;).animate({
 }, 1000);</pre>
 
                     <button type="button" class="btn btn-success btn-xs" onclick="copyPreTxt(6)">copy</button>
-<pre id="pre6" style="margin-bottom:20px;">
+                    <pre id="pre6" style="margin-bottom:20px;">
 //disp.cc推文整理
 (function () {
 	&#39;use strict&#39;;
@@ -376,7 +376,7 @@ $(&quot;#read_content&quot;).animate({
 		let _searchIndex = -1;
 		let _html = &quot;&quot;;
 		$(&quot;.ptt-push-group .push_row&quot;).each(function () {
-			_userId = jQuery.trim($(this).find(&quot;.fg133:eq(0)&quot;).text());
+			_userId = jQuery.trim($(this).find(&quot;.ptt-push-author&quot;).text());
 			_searchIndex = _pushData.findIndex((obj =&gt; obj.userId === _userId));
 			if (_searchIndex !== -1) {
 				_pushContent = _pushData[_searchIndex][&quot;pushContent&quot;];
